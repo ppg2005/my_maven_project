@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven-3.9.9' // This name should exactly match what you set in the Global Tool Configuration
+        jdk 'openjdk'
+    }
+
+    stages {
+        stage("Build and Test") {
+            steps {
+                sh "mvn clean package" // This step should now use the configured Maven
+                sh "mvn --version"
+                echo "maven installed"
+            }
+        }
+    }
+}
